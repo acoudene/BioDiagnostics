@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="BioDiagnostics.ViewModels.RequestToBeReviewedViewModel">
+    <Position X="3.75" Y="0.75" Width="6.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAgAKAAAAAgAAAAAAAAAAIgAABAAAIABIAA=</HashCode>
+      <FileName>RequestToBeReviewedViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_behavior" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BioDiagnostics.ViewModels.RequestToBeReviewedRestViewModelBehavior">
+    <Position X="10.75" Y="4.75" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RequestToBeReviewedRestViewModelBehavior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BioDiagnostics.ViewModels.Offline.OfflineRequestToBeReviewedViewModel">
+    <Position X="3.25" Y="5.5" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAIAAAAAgAKAAAAAgAAgAAAAAAAIgAABAAAIABIAA=</HashCode>
+      <FileName>Offline\OfflineRequestToBeReviewedViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SelectedItem" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Items" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BioDiagnostics.ViewObjects.RequestToBeReviewedVo" Collapsed="true">
+    <Position X="11.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="BioDiagnostics.ViewModels.IRequestToBeReviewedViewModel">
+    <Position X="1.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgACAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>IRequestToBeReviewedViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BioDiagnostics.ViewModels.BffProxying.IRequestToBeReviewedRestBffClient" Collapsed="true">
+    <Position X="12.75" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BffProxying\IRequestToBeReviewedRestBffClient.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

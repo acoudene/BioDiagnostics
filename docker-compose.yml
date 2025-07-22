@@ -1,0 +1,13 @@
+services:
+  biodiagnostics.host:
+    image: ${DOCKER_REGISTRY-}biodiagnosticshost
+    build:
+      context: .
+      dockerfile: BioDiagnostics.Host/Dockerfile
+
+  biodiagnostics.webapp:
+    image: ${DOCKER_REGISTRY-}biodiagnosticswebapp
+    build:
+      context: .
+      dockerfile: BioDiagnostics.WebApp/Dockerfile
+

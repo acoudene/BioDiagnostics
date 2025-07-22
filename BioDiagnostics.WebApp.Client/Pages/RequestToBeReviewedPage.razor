@@ -1,0 +1,19 @@
+﻿@* 
+// Changelogs Date  | Author                | Description
+// 2023-12-23       | Anthony Coudène       | Creation
+*@
+
+@page "/requestToBeReviewed/{Id?}"
+@using Core.RazorComponents.Mud
+@using BioDiagnostics.RazorComponents
+
+<ReliableContent LongRunningTask="async() => await InitByIdAsync()">
+  <PageTitle>RequestToBeReviewed</PageTitle>
+
+  <MudCard>
+    <RequestToBeReviewedForm @ref="@_form" ViewObject="@ViewModel.SelectedItem" />
+    <MudCardActions>
+      <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" OnClick="@(async () => await ValidateSubmitAsync())">@Localizer["Submit"]</MudButton>
+    </MudCardActions>
+  </MudCard>
+</ReliableContent>
