@@ -25,7 +25,6 @@ public static class RequestToBeReviewedVoExtensions
 
             // TODO - EntityMapping - Dto to ViewObject to complete
 
-            Metadata = dto.Metadata,
           };
         }
 
@@ -51,7 +50,6 @@ public static class RequestToBeReviewedVoExtensions
 
             // TODO - EntityMapping - ViewObject to Dto to complete
 
-            Metadata = viewObject.Metadata,
           };
         }
 

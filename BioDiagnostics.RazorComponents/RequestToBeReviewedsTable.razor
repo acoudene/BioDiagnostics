@@ -41,9 +41,9 @@
 
         @* // TODO - Complete with other fields *@
 
-        <MudTh>
+        @* <MudTh>
           <MudTableSortLabel SortBy="new Func<RequestToBeReviewedVo, object?>(x=>x?.Metadata)">@Localizer["Metadata"]</MudTableSortLabel>
-        </MudTh>
+        </MudTh> *@
 
       </HeaderContent>
       <RowTemplate>
@@ -53,7 +53,7 @@
 
         @* // TODO - Complete with other fields *@
 
-        <MudTd DataLabel="@Localizer["Metadata"]">@context.Metadata</MudTd>
+        @* <MudTd DataLabel="@Localizer["Metadata"]">@context.Metadata</MudTd> *@
 
       </RowTemplate>
       <RowEditingTemplate>

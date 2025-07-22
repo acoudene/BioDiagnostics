@@ -15,6 +15,12 @@ namespace BioDiagnostics.Data.MongoDb.Entities;
 [BsonDiscriminator("requestToBeReviewed", Required = true)]
 public record RequestToBeReviewedMongo : IIdentifierMongoEntity, ITimestampedMongoEntity
 {
+  // TODO - Use records instead of class
+  // TODO - Don't use Interface for persistance entity for the moment
+  // TODO - Use disciminator for inheritance or versioning
+  // TODO - Use Enumerable<T>.Empty<T>() or [] instead of new List<T>() for empty lists
+
+
   [BsonId]
   [BsonElement("_id")]
   [BsonRepresentation(representation: BsonType.ObjectId)]
@@ -35,8 +41,14 @@ public record RequestToBeReviewedMongo : IIdentifierMongoEntity, ITimestampedMon
 
   // TODO - EntityProperties - Fields to complete
 
-  [BsonElement("metadata")]
-  public string? Metadata { get; set; } // Example, to remove if needed
+  /// <summary>
+  /// A shared identifier common to all service requests that were authorized more or less simultaneously by a single author, 
+  /// representing the composite or group identifier.
+  /// </summary>
+  /// <see cref="https://hl7.org/fhir/servicerequest-definitions.html#ServiceRequest.requisition"/>"/>
+  public string? Requisition { get; set; }
+
+  public List<ServiceRequestMongo> Requested { get; set; } = []; 
 }
 
 // This commented part could be used to have benefits of mongo entity typing

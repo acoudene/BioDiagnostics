@@ -37,7 +37,6 @@ public static class RequestToBeReviewedDtoMappingExtensions
 
       // TODO - EntityMapping - Business Entity to Dto to complete
 
-      Metadata = entity.Metadata,
     };
   }
 
@@ -51,7 +50,6 @@ public static class RequestToBeReviewedDtoMappingExtensions
 
       // TODO - EntityMapping - Dto to Business Entity to complete
 
-      Metadata = dto.Metadata,
     };
   }
 }

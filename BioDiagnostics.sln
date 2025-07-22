@@ -133,6 +133,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{D50E4E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{101B4057-D6A2-4208-8AA9-721120EB96AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BioDiagnostics.Data.MongoDb.Tests", "BioDiagnostics.Data.MongoDb.Tests\BioDiagnostics.Data.MongoDb.Tests.csproj", "{859E1F62-D8B1-40AB-AF61-72AA862AD913}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -267,6 +269,10 @@ Global
 		{1A29596B-B2AC-4C1B-9F10-EA8D2A880CC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A29596B-B2AC-4C1B-9F10-EA8D2A880CC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A29596B-B2AC-4C1B-9F10-EA8D2A880CC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{859E1F62-D8B1-40AB-AF61-72AA862AD913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{859E1F62-D8B1-40AB-AF61-72AA862AD913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{859E1F62-D8B1-40AB-AF61-72AA862AD913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{859E1F62-D8B1-40AB-AF61-72AA862AD913}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -317,6 +323,7 @@ Global
 		{454F2F1F-17C7-4106-88AF-7C66C7D15605} = {78652819-E746-46C1-B3B4-5FFC52C078BC}
 		{D50E4EA8-EE21-4271-AAA8-3BA7517AC71A} = {78652819-E746-46C1-B3B4-5FFC52C078BC}
 		{101B4057-D6A2-4208-8AA9-721120EB96AE} = {78652819-E746-46C1-B3B4-5FFC52C078BC}
+		{859E1F62-D8B1-40AB-AF61-72AA862AD913} = {A41B1BCA-6632-47C0-A255-00BF231782FB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CDDA49FA-B05A-4DB3-9900-4C35F2BAB2C6}

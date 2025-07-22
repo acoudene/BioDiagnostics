@@ -10,7 +10,7 @@ public class RequestToBeReviewedRepository : IRequestToBeReviewedRepository
 {
   public const string CollectionName = "requestToBeReviewed";
 
-  protected TimeStampedMongoRepositoryBehavior<RequestToBeReviewed, RequestToBeReviewedMongo> Behavior { get => _behavior; }
+  internal protected TimeStampedMongoRepositoryBehavior<RequestToBeReviewed, RequestToBeReviewedMongo> Behavior { get => _behavior; }
   private readonly TimeStampedMongoRepositoryBehavior<RequestToBeReviewed, RequestToBeReviewedMongo> _behavior;
 
   public RequestToBeReviewedRepository(IMongoContext mongoContext)

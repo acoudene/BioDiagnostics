@@ -51,7 +51,7 @@ public partial class RequestToBeReviewedsTable
 
       // TODO - Complete with search filter in grid
 
-      RequestToBeReviewedVo x when x.Metadata is not null && x.Metadata.ToString().Contains(_searchString, StringComparison.OrdinalIgnoreCase) => true,
+      //RequestToBeReviewedVo x when x.Metadata is not null && x.Metadata.ToString().Contains(_searchString, StringComparison.OrdinalIgnoreCase) => true,
 
       null => false,
       _ => false

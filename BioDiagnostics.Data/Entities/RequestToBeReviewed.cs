@@ -15,8 +15,6 @@ public record RequestToBeReviewed : IIdentifierEntity, ITimestampedEntity
   public DateTimeOffset UpdatedAt { get; init; }
 
   // TODO - EntityProperties - Fields to complete
-
-  public string? Metadata { get; set; } // Example, to remove if needed
 }
 
 // This commented part could be used to have benefits of entity typing

@@ -37,7 +37,7 @@ public static class RequestToBeReviewedMongoMappingExtensions
 
       // TODO - EntityMapping - Business Entity to Mongo Entity to complete
 
-      Metadata = entity.Metadata,
+      
       
     };
   }
@@ -52,7 +52,7 @@ public static class RequestToBeReviewedMongoMappingExtensions
         
       // TODO - EntityMapping - Mongo Entity to Business Entity to complete
 
-      Metadata = mongoEntity.Metadata,
+      
     };
   }
 }

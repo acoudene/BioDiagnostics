@@ -15,4 +15,8 @@
     <ProjectReference Include="..\BioDiagnostics.Data\BioDiagnostics.Data.csproj" />    
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="BioDiagnostics.Data.MongoDb.Tests" />
+  </ItemGroup>
+
 </Project>

@@ -16,7 +16,6 @@ public record RequestToBeReviewedDto : IIdentifierDto, ITimestampedDto
 
   // TODO - EntityProperties - Fields to complete
 
-  public string? Metadata { get; set; } // Example, to remove if needed
 }
 
 // This commented part could be used to have benefits of json entity typing

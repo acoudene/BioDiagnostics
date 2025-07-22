@@ -121,26 +121,26 @@ public class GivenRequestToBeReviewedApi : HostApiMongoTestBase<Program>
     Assert.Empty(gotItems);
   }
 
-  [Theory]
-  [ClassData(typeof(RequestToBeReviewedData))]
-  public async Task WhenPatchingItem_ThenItemIsPatched_Async(RequestToBeReviewedDto item)
-  {
-    // Arrange
-    var logger = CreateLogger<HttpRequestToBeReviewedClient>();
-    var httpClientFactory = CreateHttpClientFactory(ApiRelativePath, new TestWebApplicationFactoryClientOptions(logger));
-    var client = new HttpRequestToBeReviewedClient(logger, httpClientFactory);
-    await client.CreateOrUpdateAsync(item); // Just to setup with an existing item
-    Guid id = item.Id;
-    string metadata = Guid.NewGuid().ToString();
+  //[Theory]
+  //[ClassData(typeof(RequestToBeReviewedData))]
+  //public async Task WhenPatchingItem_ThenItemIsPatched_Async(RequestToBeReviewedDto item)
+  //{
+  //  // Arrange
+  //  var logger = CreateLogger<HttpRequestToBeReviewedClient>();
+  //  var httpClientFactory = CreateHttpClientFactory(ApiRelativePath, new TestWebApplicationFactoryClientOptions(logger));
+  //  var client = new HttpRequestToBeReviewedClient(logger, httpClientFactory);
+  //  await client.CreateOrUpdateAsync(item); // Just to setup with an existing item
+  //  Guid id = item.Id;
+  //  string metadata = Guid.NewGuid().ToString();
 
-    // Act
-    var patch = new JsonPatchDocument<RequestToBeReviewedDto>();
-    patch.Replace(dto => dto.Metadata, metadata);
-    await client.PatchAsync(id, patch);
+  //  // Act
+  //  var patch = new JsonPatchDocument<RequestToBeReviewedDto>();
+  //  patch.Replace(dto => dto.Metadata, metadata);
+  //  await client.PatchAsync(id, patch);
 
-    // Assert
-    var foundItem = await client.GetByIdAsync(id);
-    Assert.NotNull(foundItem);
-    Assert.Equal(metadata, foundItem.Metadata);
-  }
+  //  // Assert
+  //  var foundItem = await client.GetByIdAsync(id);
+  //  Assert.NotNull(foundItem);
+  //  Assert.Equal(metadata, foundItem.Metadata);
+  //}
 }
