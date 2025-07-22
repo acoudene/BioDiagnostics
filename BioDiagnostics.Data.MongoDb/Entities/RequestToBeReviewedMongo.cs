@@ -46,9 +46,11 @@ public record RequestToBeReviewedMongo : IIdentifierMongoEntity, ITimestampedMon
   /// representing the composite or group identifier.
   /// </summary>
   /// <see cref="https://hl7.org/fhir/servicerequest-definitions.html#ServiceRequest.requisition"/>"/>
+  [BsonElement("requisition")]
   public string? Requisition { get; set; }
 
-  public List<ServiceRequestMongo> Requested { get; set; } = []; 
+  [BsonElement("requesteds")]
+  public List<ServiceRequestMongo> Requesteds { get; set; } = []; 
 }
 
 // This commented part could be used to have benefits of mongo entity typing

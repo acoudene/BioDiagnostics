@@ -14,11 +14,13 @@ public record SpecimenMongo /*: ISpecimen*/
   /// <summary>
   /// A list of identifiers for the specimen
   /// </summary>
-  public List<IdentifierMongo> Identifier { get; set; } = [];
+  [BsonElement("identifiers")]
+  public List<IdentifierMongo> Identifiers { get; set; } = [];
 
   /// <summary>
   /// Comments or notes about the specimen.
   /// </summary>
   /// <see cref="https://hl7.org/fhir/specimen-definitions.html#Specimen.note"/>
-  public List<string> Note { get; set; } = [];
+  [BsonElement("notes")]
+  public List<string> Notes { get; set; } = [];
 }

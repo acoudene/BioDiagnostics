@@ -14,13 +14,15 @@ public record ServiceRequestMongo /*: IFulfilledBy*/
   /// <summary>
   /// A list of identifiers for the service request (e.g., order number, external ID).
   /// </summary>
-  public List<IdentifierMongo> Identifier { get; set; } = [];
+  [BsonElement("identifiers")]
+  public List<IdentifierMongo> Identifiers { get; set; } = [];
 
   /// <summary>
   /// Plans/proposals/orders that fulfill the request.
-  /// </summary>
-  //public List<IFulfilledBy>? FulfilledBy { get; set; }
+  /// </summary>  
+  [BsonElement("observations")]
   public List<ObservationMongo> Observations { get; set; } = [];
+  //public List<IFulfilledBy>? FulfilledBy { get; set; }
 
   /// <summary>
   /// Individual or Entity the service is ordered for.
@@ -30,12 +32,14 @@ public record ServiceRequestMongo /*: IFulfilledBy*/
   /// </summary>
   /// <see cref="https://hl7.org/fhir/servicerequest-definitions.html#ServiceRequest.subject"/>
   // FHIR Cardinality: 1..1
-  //public ISubject? Subject { get; set; }
+  [BsonElement("patient")]
   public PatientMongo? Patient { get; set; }
+  //public ISubject? Subject { get; set; }
 
   /// <summary>
   /// A code that identifies what is being requested (e.g., procedure, diagnostic test).
   /// </summary>
   /// <see cref="https://hl7.org/fhir/servicerequest-definitions.html#ServiceRequest.code"/>
+  [BsonElement("codes")]
   public List<CodeableConceptMongo> Codes { get; set; } = [];
 }

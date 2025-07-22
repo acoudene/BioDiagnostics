@@ -11,15 +11,18 @@ public record CodingMongo
   /// <summary>
   /// The identification of the code system that defines the meaning of the symbol.
   /// </summary>
+  [BsonElement("system")]
   public string? System { get; set; }
 
   /// <summary>
   /// The symbol in the code system.
   /// </summary>
+  [BsonElement("code")]
   public string? Code { get; set; }
 
   /// <summary>
   /// A representation of the meaning of the code in the system, if available.
   /// </summary>
+  [BsonElement("display")]
   public string? Display { get; set; }
 }

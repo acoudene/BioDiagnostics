@@ -14,6 +14,7 @@ public record ObservationMongo /*: IFulfilledBy*/
   /// <summary>
   /// Type of observation (code / type)
   /// </summary>
+  [BsonElement("codes")]
   public List<CodeableConceptMongo> Codes { get; set; } = [];
 
   /// <summary>
@@ -21,13 +22,15 @@ public record ObservationMongo /*: IFulfilledBy*/
   /// <para>Specimen used for this observation.</para>
   /// </summary>
   /// <see cref="https://www.hl7.org/fhir/observation-definitions.html#Observation.specimen"/>
-  // FHIR Cardinality: 0..1
-  //public ISpecimen? Specimen { get; set; }
+  // FHIR Cardinality: 0..1  
+  [BsonElement("specimen")]
   public SpecimenMongo? Specimen { get; set; }
+  //public ISpecimen? Specimen { get; set; }
 
   /// <summary>
   /// The status of the result value (e.g., registered, preliminary, final, amended).
   /// </summary>
   /// <see cref="https://hl7.org/fhir/observation-definitions.html#Observation.status"/>
+  [BsonElement("status")]
   public ObservationStatusMongo? Status { get; set; }
 }

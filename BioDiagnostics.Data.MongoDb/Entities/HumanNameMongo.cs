@@ -9,19 +9,23 @@ public record HumanNameMongo
   // TODO - Use records instead of class
   // TODO - Use Enumerable<T>.Empty<T>() or [] instead of new List<T>() for empty lists
   // TODO - Always initialize lists to avoid null reference exceptions
+  // TODO - Use plural for collection properties (e.g., Codings instead of Coding)
 
   /// <summary>
   /// The family name (last name).
   /// </summary>
+  [BsonElement("family")]
   public string? Family { get; set; }
 
   /// <summary>
   /// The given names (first name, middle name, etc.).
   /// </summary>
-  public List<string> Given { get; set; } = [];
+  [BsonElement("givens")]
+  public List<string> Givens { get; set; } = [];
 
   /// <summary>
   /// The use of the name (usual, official, temp, nickname, anonymous, old, maiden).
   /// </summary>
+  [BsonElement("use")]
   public NameUseMongo? Use { get; set; }
 }

@@ -14,10 +14,12 @@ public record PatientMongo /*: ISubject*/
   /// <summary>
   /// The patient's name(s).
   /// </summary>
-  public List<HumanNameMongo> Name { get; set; } = [];
+  [BsonElement("names")]
+  public List<HumanNameMongo> Names { get; set; } = [];
 
   /// <summary>
   /// A list of identifiers for the patient (e.g., MRN, national ID).
   /// </summary>
-  public List<IdentifierMongo> Identifier { get; set; } = [];
+  [BsonElement("identifiers")]
+  public List<IdentifierMongo> Identifiers { get; set; } = [];
 }

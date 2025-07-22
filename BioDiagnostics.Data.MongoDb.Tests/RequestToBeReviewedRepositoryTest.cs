@@ -87,11 +87,11 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
       Id = Guid.NewGuid(),
       CreatedAt = DateTime.UtcNow,
       UpdatedAt = DateTime.UtcNow,
-      Requested =
+      Requesteds =
       [
         new ServiceRequestMongo
         {
-          Identifier =
+          Identifiers =
           [
             new IdentifierMongo() { System = "ServiceRequest_01_Identifier_System_01", Type = "ServiceRequest_01_Identifier_Type_01", Value = "ServiceRequest_01_Identifier_Value_01"},
             new IdentifierMongo() { System = "ServiceRequest_01_Identifier_System_02", Type = "ServiceRequest_01_Identifier_Type_02", Value = "ServiceRequest_01_Identifier_Value_02"}
@@ -100,7 +100,7 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
           [
             new CodeableConceptMongo()
             {
-              Coding =
+              Codings =
               [
                 new CodingMongo() { Code = "ServiceRequest_01_Codeable_01_Code_01", System = "ServiceRequest_01_Codeable_01_System_01" },
                 new CodingMongo() { Code = "ServiceRequest_01_Codeable_01_Code_02", System = "ServiceRequest_01_Codeable_01_System_02" }
@@ -108,7 +108,7 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
             },
             new CodeableConceptMongo()
             {
-              Coding =
+              Codings =
               [
                 new CodingMongo() { Code = "ServiceRequest_01_Codeable_02_Code_01", System = "ServiceRequest_01_Codeable_02_System_01" },
                 new CodingMongo() { Code = "ServiceRequest_01_Codeable_02_Code_02", System = "ServiceRequest_01_Codeable_02_System_02" }
@@ -123,7 +123,7 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
               [
                 new CodeableConceptMongo()
                 {
-                  Coding =
+                  Codings =
                   [
                     new CodingMongo() { Code = "Observation_01_Codeable_01_Code_01", System = "Observation_01_Codeable_01_System_01" },
                     new CodingMongo() { Code = "Observation_01_Codeable_01_Code_02", System = "Observation_01_Codeable_01_System_02" }
@@ -131,7 +131,7 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
                 },
                 new CodeableConceptMongo()
                 {
-                  Coding =
+                  Codings =
                   [
                     new CodingMongo() { Code = "Observation_01_Codeable_02_Code_01", System = "Observation_01_Codeable_02_System_01" },
                     new CodingMongo() { Code = "Observation_01_Codeable_02_Code_02", System = "Observation_01_Codeable_02_System_02" }
@@ -140,12 +140,12 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
               ],
               Specimen = new SpecimenMongo()
               {
-                Identifier =
+                Identifiers =
                 [
                   new IdentifierMongo() { System = "Specimen_01_Identifier_System_01", Type = "Specimen_01_Identifier_Type_01", Value = "Specimen_01_Identifier_Value_01" },
                   new IdentifierMongo() { System = "Specimen_01_Identifier_System_02", Type = "Specimen_01_Identifier_Type_02", Value = "Specimen_01_Identifier_Value_02" }
                 ],
-                Note =
+                Notes =
                 [
                   "Specimen 01 Note 01",
                   "Specimen 01 Note 02",
@@ -159,7 +159,7 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
               [
                 new CodeableConceptMongo()
                 {
-                  Coding =
+                  Codings =
                   [
                     new CodingMongo() { Code = "Observation_02_Codeable_01_Code_01", System = "Observation_02_Codeable_01_System_01" },
                     new CodingMongo() { Code = "Observation_02_Codeable_01_Code_02", System = "Observation_02_Codeable_01_System_02" }
@@ -167,7 +167,7 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
                 },
                 new CodeableConceptMongo()
                 {
-                  Coding =
+                  Codings =
                   [
                     new CodingMongo() { Code = "Observation_02_Codeable_02_Code_01", System = "Observation_02_Codeable_02_System_01" },
                     new CodingMongo() { Code = "Observation_02_Codeable_02_Code_02", System = "Observation_02_Codeable_02_System_02" }
@@ -176,12 +176,12 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
               ],
               Specimen = new SpecimenMongo()
               {
-                Identifier =
+                Identifiers =
                 [
                   new IdentifierMongo() { System = "Specimen_02_Identifier_System_01", Type = "Specimen_02_Identifier_Type_01", Value = "Specimen_02_Identifier_Value_01" },
                   new IdentifierMongo() { System = "Specimen_02_Identifier_System_02", Type = "Specimen_02_Identifier_Type_02", Value = "Specimen_02_Identifier_Value_02" }
                 ],
-                Note =
+                Notes =
                 [
                   "Specimen 02 Note 01",
                   "Specimen 02 Note 02",
@@ -192,7 +192,7 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
           ],
           Patient = new PatientMongo
           {
-            Identifier =
+            Identifiers =
             [
               new IdentifierMongo() { System = "Patient_01_Identifier_System_01", Type = "Patient_01_Identifier_Type_01", Value = "Patient_01_Identifier_Value_01" },
               new IdentifierMongo() { System = "Patient_01_Identifier_System_02", Type = "Patient_01_Identifier_Type_02", Value = "Patient_01_Identifier_Value_02" }
@@ -202,7 +202,7 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
         },
         new ServiceRequestMongo
         {
-          Identifier =
+          Identifiers =
           [
             new IdentifierMongo() { System = "ServiceRequest_02_Identifier_System_01", Type = "ServiceRequest_02_Identifier_Type_01", Value = "ServiceRequest_02_Identifier_Value_01"},
             new IdentifierMongo() { System = "ServiceRequest_02_Identifier_System_02", Type = "ServiceRequest_02_Identifier_Type_02", Value = "ServiceRequest_02_Identifier_Value_02"}
@@ -211,7 +211,7 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
           [
             new CodeableConceptMongo()
             {
-              Coding =
+              Codings =
               [
                 new CodingMongo() { Code = "ServiceRequest_02_Codeable_01_Code_01", System = "ServiceRequest_02_Codeable_01_System_01" },
                 new CodingMongo() { Code = "ServiceRequest_02_Codeable_01_Code_02", System = "ServiceRequest_02_Codeable_01_System_02" }
@@ -219,7 +219,7 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
             },
             new CodeableConceptMongo()
             {
-              Coding =
+              Codings =
               [
                 new CodingMongo() { Code = "ServiceRequest_02_Codeable_02_Code_01", System = "ServiceRequest_02_Codeable_02_System_01" },
                 new CodingMongo() { Code = "ServiceRequest_02_Codeable_02_Code_02", System = "ServiceRequest_02_Codeable_02_System_02" }
@@ -234,7 +234,7 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
               [
                 new CodeableConceptMongo()
                 {
-                  Coding =
+                  Codings =
                   [
                     new CodingMongo() { Code = "Observation_01_Codeable_01_Code_01", System = "Observation_01_Codeable_01_System_01" },
                     new CodingMongo() { Code = "Observation_01_Codeable_01_Code_02", System = "Observation_01_Codeable_01_System_02" }
@@ -242,7 +242,7 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
                 },
                 new CodeableConceptMongo()
                 {
-                  Coding =
+                  Codings =
                   [
                     new CodingMongo() { Code = "Observation_01_Codeable_02_Code_01", System = "Observation_01_Codeable_02_System_01" },
                     new CodingMongo() { Code = "Observation_01_Codeable_02_Code_02", System = "Observation_01_Codeable_02_System_02" }
@@ -251,12 +251,12 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
               ],
               Specimen = new SpecimenMongo()
               {
-                Identifier =
+                Identifiers =
                 [
                   new IdentifierMongo() { System = "Specimen_01_Identifier_System_01", Type = "Specimen_01_Identifier_Type_01", Value = "Specimen_01_Identifier_Value_01" },
                   new IdentifierMongo() { System = "Specimen_01_Identifier_System_02", Type = "Specimen_01_Identifier_Type_02", Value = "Specimen_01_Identifier_Value_02" }
                 ],
-                Note =
+                Notes =
                 [
                   "Specimen 01 Note 01",
                   "Specimen 01 Note 02",
@@ -270,7 +270,7 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
               [
                 new CodeableConceptMongo()
                 {
-                  Coding =
+                  Codings =
                   [
                     new CodingMongo() { Code = "Observation_02_Codeable_01_Code_01", System = "Observation_02_Codeable_01_System_01" },
                     new CodingMongo() { Code = "Observation_02_Codeable_01_Code_02", System = "Observation_02_Codeable_01_System_02" }
@@ -278,7 +278,7 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
                 },
                 new CodeableConceptMongo()
                 {
-                  Coding =
+                  Codings =
                   [
                     new CodingMongo() { Code = "Observation_02_Codeable_02_Code_01", System = "Observation_02_Codeable_02_System_01" },
                     new CodingMongo() { Code = "Observation_02_Codeable_02_Code_02", System = "Observation_02_Codeable_02_System_02" }
@@ -287,12 +287,12 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
               ],
               Specimen = new SpecimenMongo()
               {
-                Identifier =
+                Identifiers =
                 [
                   new IdentifierMongo() { System = "Specimen_02_Identifier_System_01", Type = "Specimen_02_Identifier_Type_01", Value = "Specimen_02_Identifier_Value_01" },
                   new IdentifierMongo() { System = "Specimen_02_Identifier_System_02", Type = "Specimen_02_Identifier_Type_02", Value = "Specimen_02_Identifier_Value_02" }
                 ],
-                Note =
+                Notes =
                 [
                   "Specimen 02 Note 01",
                   "Specimen 02 Note 02",
@@ -303,7 +303,7 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
           ],
           Patient = new PatientMongo
           {
-            Identifier =
+            Identifiers =
             [
               new IdentifierMongo() { System = "Patient_02_Identifier_System_01", Type = "Patient_02_Identifier_Type_01", Value = "Patient_02_Identifier_Value_01" },
               new IdentifierMongo() { System = "Patient_02_Identifier_System_02", Type = "Patient_02_Identifier_Type_02", Value = "Patient_02_Identifier_Value_02" }
