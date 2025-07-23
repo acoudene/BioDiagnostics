@@ -2,6 +2,8 @@ using BioDiagnostics.Data.MongoDb.Entities;
 using BioDiagnostics.Data.MongoDb.Repositories;
 using Core.Data.MongoDb;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using MongoDB.Driver.Core.Events;
 using Testcontainers.MongoDb;
@@ -28,6 +30,9 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
   public async Task InitializeAsync()
   {
     await _mongoDbContainer.StartAsync();
+
+    BsonSerializer.TryRegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+    BsonSerializer.TryRegisterSerializer(typeof(DateTimeOffset), new DateTimeOffsetSerializer(BsonType.DateTime));
   }
 
   public async Task DisposeAsync()
