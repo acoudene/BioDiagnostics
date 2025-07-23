@@ -42,6 +42,21 @@ public static class RequestToBeReviewedMongoMappingExtensions
     };
   }
 
+  public static RequestToBeReviewedMongoV02 ToMongoV02(this RequestToBeReviewed entity)
+  {
+    return new RequestToBeReviewedMongoV02()
+    {
+      Id = entity.Id,
+      CreatedAt = entity.CreatedAt.UtcDateTime,
+      UpdatedAt = entity.UpdatedAt.UtcDateTime,
+
+      // TODO - EntityMapping - Business Entity to Mongo Entity to complete
+
+
+
+    };
+  }
+
   public static RequestToBeReviewed ToEntity(this RequestToBeReviewedMongo mongoEntity)
   {
     return new RequestToBeReviewed()
@@ -53,6 +68,20 @@ public static class RequestToBeReviewedMongoMappingExtensions
       // TODO - EntityMapping - Mongo Entity to Business Entity to complete
 
       
+    };
+  }
+
+  public static RequestToBeReviewed ToEntity(this RequestToBeReviewedMongoV02 mongoEntity)
+  {
+    return new RequestToBeReviewed()
+    {
+      Id = mongoEntity.Id,
+      CreatedAt = mongoEntity.CreatedAt,
+      UpdatedAt = mongoEntity.UpdatedAt,
+
+      // TODO - EntityMapping - Mongo Entity to Business Entity to complete
+
+
     };
   }
 }

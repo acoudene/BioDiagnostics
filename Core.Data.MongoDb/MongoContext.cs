@@ -17,9 +17,23 @@ public class MongoContext : IMongoContext
   {
   }
 
+  public MongoContext(string databaseName, MongoClient mongoClient)
+  {
+    if (string.IsNullOrWhiteSpace(databaseName))
+      throw new ArgumentNullException(nameof(databaseName));
+    if (mongoClient is null) 
+      throw new ArgumentNullException(nameof(mongoClient));
+
+    _database = mongoClient.GetDatabase(databaseName);
+
+    if (_database is null)
+      throw new InvalidOperationException($"Problem while getting mongo database instance for database name {databaseName}...");
+  }
+
   public MongoContext(DatabaseSettings databaseSettings)
   {
-    if (databaseSettings is null) throw new ArgumentNullException(nameof(databaseSettings));
+    if (databaseSettings is null) 
+      throw new ArgumentNullException(nameof(databaseSettings));
 
     /// Extract connection string and database name
     /// from configuration settings, then create a mongodb instance of <see cref="IMongoDatabase"/>

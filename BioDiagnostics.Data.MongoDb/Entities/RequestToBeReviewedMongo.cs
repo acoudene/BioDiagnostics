@@ -12,14 +12,15 @@ namespace BioDiagnostics.Data.MongoDb.Entities;
 //public record RequestToBeReviewedMongoBase : IIdentifierMongoEntity
 
 [BsonIgnoreExtraElements]
-[BsonDiscriminator("requestToBeReviewed", Required = true)]
+[BsonDiscriminator("requestToBeReviewed", Required = true, RootClass = true)]
+[BsonKnownTypes(typeof(RequestToBeReviewedMongoV02))]
 public record RequestToBeReviewedMongo : IIdentifierMongoEntity, ITimestampedMongoEntity
 {
+
   // TODO - Use records instead of class
   // TODO - Don't use Interface for persistance entity for the moment
   // TODO - Use disciminator for inheritance or versioning
   // TODO - Use Enumerable<T>.Empty<T>() or [] instead of new List<T>() for empty lists
-
 
   [BsonId]
   [BsonElement("_id")]
