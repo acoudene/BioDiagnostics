@@ -343,6 +343,30 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
 
   [Theory]
   [ClassData(typeof(SeedDataTheoryData))]
+  public async Task CreateAsync_create_an_entity_with_same_id_into_database(SeedDataBuilder seedDataBuilder)
+  {
+    // Arrange
+    var seedData = DoSeedData(seedDataBuilder);
+    var mongoContext = GetMongoContext(seedData);
+    var repository = new RequestToBeReviewedRepository(mongoContext);
+    var mongoSet = repository.Behavior.MongoSet;
+
+    // Act
+    var newEntity = new RequestToBeReviewedMongo
+    {
+      Id = Guid.NewGuid(),
+      CreatedAt = DateTime.UtcNow,
+      UpdatedAt = DateTime.UtcNow,      
+    };
+
+    await mongoSet.CreateAsync(newEntity);
+
+    // Assert
+    await Assert.ThrowsAsync<MongoWriteException>(async () => await mongoSet.CreateAsync(newEntity));
+  }
+
+  [Theory]
+  [ClassData(typeof(SeedDataTheoryData))]
   public async Task CreateAsync_create_a_V02_entity_into_database(SeedDataBuilder seedDataBuilder)
   {
     // Arrange
