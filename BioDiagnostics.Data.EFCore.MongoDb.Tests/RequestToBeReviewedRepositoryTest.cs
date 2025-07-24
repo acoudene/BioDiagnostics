@@ -1,9 +1,8 @@
 using BioDiagnostics.Data.EFCore.MongoDb.DbContexts;
 using BioDiagnostics.Data.EFCore.MongoDb.Repositories;
-using BioDiagnostics.Data.Entities;
 using BioDiagnostics.Data.MongoDb.Tests;
+using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
-using System.Text.Json;
 using Testcontainers.MongoDb;
 using Xunit.Abstractions;
 
@@ -50,7 +49,9 @@ public class RequestToBeReviewedRepositoryTest : IAsyncLifetime
     return seedData;
   }
 
-  private BioDiagnosticsDbContextBuilder CreateDbContextBuilder() => new BioDiagnosticsDbContextBuilder(_mongoDbContainer.GetConnectionString());
+  private BioDiagnosticsDbContextBuilder CreateDbContextBuilder()
+    => new BioDiagnosticsDbContextBuilder(_mongoDbContainer.GetConnectionString())
+    .UseLoggerFactory(new LoggerFactory(new[] { new TestOutputLoggerProvider(_output) }));
 
   [Theory]
   [ClassData(typeof(SeedDataTheoryData))]

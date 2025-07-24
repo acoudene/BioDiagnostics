@@ -3,9 +3,6 @@
 
 namespace BioDiagnostics.Data.Entities;
 
-// This commented part could be used to have benefits of entity typing
-//public abstract record RequestToBeReviewedBase : IIdentifierEntity
-
 public record RequestToBeReviewed : IIdentifierEntity, ITimestampedEntity
 {
   public required Guid Id { get; init; }
@@ -15,10 +12,14 @@ public record RequestToBeReviewed : IIdentifierEntity, ITimestampedEntity
   public DateTimeOffset UpdatedAt { get; init; }
 
   // TODO - EntityProperties - Fields to complete
-}
 
-// This commented part could be used to have benefits of entity typing
-// Example of inherited class
-//public record RequestToBeReviewedInherited : RequestToBeReviewedBase
-//{
-//}
+  /// <summary>
+  /// A shared identifier common to all service requests that were authorized more or less simultaneously by a single author, 
+  /// representing the composite or group identifier.
+  /// </summary>
+  /// <see cref="https://hl7.org/fhir/servicerequest-definitions.html#ServiceRequest.requisition"/>"/>
+  public string? Requisition { get; set; }
+
+  public List<ServiceRequest> Requesteds { get; set; } = [];
+
+}

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace BioDiagnostics.Data.EFCore.MongoDb.DbContexts;
 
@@ -6,6 +7,7 @@ public class BioDiagnosticsDbContextBuilder
 {
   private readonly string _connectionString;
   private string? _databaseName;
+  private LoggerFactory? _loggerFactory;
 
   public BioDiagnosticsDbContextBuilder(string connectionString)
   {
@@ -24,16 +26,41 @@ public class BioDiagnosticsDbContextBuilder
     return this;
   }
 
-  public BioDiagnosticsDbContext Build()
+  public BioDiagnosticsDbContextBuilder UseLoggerFactory(LoggerFactory loggerFactory)
+  {
+    if (loggerFactory is null)
+      throw new ArgumentException(nameof(loggerFactory));
+
+    _loggerFactory = loggerFactory;
+    return this;
+  }
+
+  public DbContextOptions BuildOptions()
   {
     if (string.IsNullOrWhiteSpace(_databaseName))
       throw new ArgumentException(nameof(_databaseName));
 
-    var options = new DbContextOptionsBuilder<BioDiagnosticsDbContext>()
+    if (_loggerFactory is null)
+    {
+      return new DbContextOptionsBuilder<BioDiagnosticsDbContext>()
       .UseMongoDB(
       _connectionString,
       _databaseName)
       .Options;
+    }
+
+    return new DbContextOptionsBuilder<BioDiagnosticsDbContext>()
+      .UseMongoDB(
+      _connectionString,
+      _databaseName)
+      .UseLoggerFactory(_loggerFactory)
+      .EnableSensitiveDataLogging()
+      .Options;
+  }
+
+  public BioDiagnosticsDbContext Build()
+  {
+    var options = BuildOptions();
     return new BioDiagnosticsDbContext(options);
   }
 }
