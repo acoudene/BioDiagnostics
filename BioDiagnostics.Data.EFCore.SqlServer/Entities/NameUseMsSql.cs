@@ -2,7 +2,7 @@
 
 namespace BioDiagnostics.Data.EFCore.SqlServer.Entities;
 
-public enum NameUseSql
+public enum NameUseMsSql
 {
   //
   // Summary:

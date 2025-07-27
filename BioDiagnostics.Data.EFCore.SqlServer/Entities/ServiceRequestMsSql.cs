@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BioDiagnostics.Data.EFCore.SqlServer.Entities;
@@ -6,24 +7,28 @@ namespace BioDiagnostics.Data.EFCore.SqlServer.Entities;
 /// A record of a request for service such as diagnostic investigations, treatments, or operations to be performed.
 /// </summary>
 /// <seealso cref="Hl7.Fhir.Model.ServiceRequest"/>
-public record ServiceRequestSql /*: IFulfilledBy*/
+[Table("ServiceRequest")]
+public record ServiceRequestMsSql /*: IFulfilledBy*/
 {
   // TODO - Use records instead of class
   // TODO - Don't use Interface for persistance entity for the moment
   // TODO - Use Enumerable<T>.Empty<T>() or [] instead of new List<T>() for empty lists
   // TODO - Always initialize lists to avoid null reference exceptions
 
+  [Key]
+  public required Guid Id { get; set; }
+
   /// <summary>
   /// A list of identifiers for the service request (e.g., order number, external ID).
   /// </summary>
-  [Column("identifiers")]
-  public List<IdentifierSql> Identifiers { get; set; } = [];
+  [Column("Identifiers")]
+  public List<IdentifierMsSql> Identifiers { get; set; } = [];
 
   /// <summary>
   /// Plans/proposals/orders that fulfill the request.
   /// </summary>  
-  [Column("observations")]
-  public List<ObservationSql> Observations { get; set; } = [];
+  [Column("Observations")]
+  public List<ObservationMsSql> Observations { get; set; } = [];
   //public List<IFulfilledBy>? FulfilledBy { get; set; }
 
   /// <summary>
@@ -34,14 +39,14 @@ public record ServiceRequestSql /*: IFulfilledBy*/
   /// </summary>
   /// <see cref="https://hl7.org/fhir/servicerequest-definitions.html#ServiceRequest.subject"/>
   // FHIR Cardinality: 1..1
-  [Column("patient")]
-  public PatientSql? Patient { get; set; }
+  [Column("Patient")]
+  public PatientMsSql? Patient { get; set; }
   //public ISubject? Subject { get; set; }
 
   /// <summary>
   /// A code that identifies what is being requested (e.g., procedure, diagnostic test).
   /// </summary>
   /// <see cref="https://hl7.org/fhir/servicerequest-definitions.html#ServiceRequest.code"/>
-  [Column("codes")]
-  public List<CodeableConceptSql> Codes { get; set; } = [];
+  [Column("Codes")]
+  public List<CodeableConceptMsSql> Codes { get; set; } = [];
 }

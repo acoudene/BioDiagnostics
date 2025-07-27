@@ -36,29 +36,30 @@ public class RequestToBeReviewedRepository : IRequestToBeReviewedRepository
   //}
 
   private readonly BioDiagnosticsDbContext _dbContext;
+  public BioDiagnosticsDbContext DbContext => _dbContext;
 
   public RequestToBeReviewedRepository(BioDiagnosticsDbContext dbContext)
   {
     _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
   }
 
-  internal protected DbSet<RequestToBeReviewedSql> GetEntities() => _dbContext.RequestToBeRevieweds;
+  internal protected DbSet<RequestToBeReviewedMsSql> GetEntities() => _dbContext.RequestToBeRevieweds;
 
 
-  protected virtual RequestToBeReviewed ToEntity(RequestToBeReviewedSql mongoEntity)
+  protected virtual RequestToBeReviewed ToEntity(RequestToBeReviewedMsSql dbEntity)
   {
-    return mongoEntity.ToEntity();
+    return dbEntity.ToEntity();
   }
 
-  protected virtual RequestToBeReviewedSql ToMongoEntity(RequestToBeReviewed entity)
+  protected virtual RequestToBeReviewedMsSql ToDbEntity(RequestToBeReviewed entity)
   {
-    return entity.ToMongo();
+    return entity.ToDbEntity();
   }
 
   public virtual async Task<List<RequestToBeReviewed>> GetAllAsync(CancellationToken cancellationToken = default)
     => (await GetEntities()
     .ToListAsync(cancellationToken))
-    .Select(mongoEntity => ToEntity(mongoEntity))
+    .Select(entity => ToEntity(entity))
     .ToList();
 
   public virtual /*async*/ Task<RequestToBeReviewed?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
@@ -81,7 +82,7 @@ public class RequestToBeReviewedRepository : IRequestToBeReviewedRepository
     //=> await _behavior.RemoveAsync(id, cancellationToken);
     => throw new NotImplementedException();
 
-  public virtual void SetUniqueIndex(params Expression<Func<RequestToBeReviewedSql, object>>[] fields)
+  public virtual void SetUniqueIndex(params Expression<Func<RequestToBeReviewedMsSql, object>>[] fields)
     //=> _behavior.SetUniqueIndex(fields);
     => throw new NotImplementedException();
 

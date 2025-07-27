@@ -1,12 +1,11 @@
 ﻿// Changelogs Date  | Author                | Description
 // 2023-12-23       | Anthony Coudène       | Creation
 
-using BioDiagnostics.Data.EFCore.MongoDb.Entities;
 using BioDiagnostics.Data.Entities;
 
 namespace BioDiagnostics.Data.EFCore.SqlServer.Entities;
 
-public static class RequestToBeReviewedSqlMappingExtensions
+public static class RequestToBeReviewedMsSqlMappingExtensions
 {
   // This commented part could be used to have benefits of mongo entity typing
   //public static RequestToBeReviewedMongoBase ToInheritedMongo(this RequestToBeReviewedBase entity)
@@ -30,9 +29,9 @@ public static class RequestToBeReviewedSqlMappingExtensions
   //  }
   //}
 
-  public static RequestToBeReviewedSql ToMongo(this RequestToBeReviewed entity)
+  public static RequestToBeReviewedMsSql ToDbEntity(this RequestToBeReviewed entity)
   {
-    return new RequestToBeReviewedSql()
+    return new RequestToBeReviewedMsSql()
     {
       Id = entity.Id,
       CreatedAt = entity.CreatedAt.UtcDateTime,
@@ -45,22 +44,7 @@ public static class RequestToBeReviewedSqlMappingExtensions
     };
   }
 
-  public static RequestToBeReviewedMongoV02 ToMongoV02(this RequestToBeReviewed entity)
-  {
-    return new RequestToBeReviewedMongoV02()
-    {
-      Id = entity.Id,
-      CreatedAt = entity.CreatedAt.UtcDateTime,
-      UpdatedAt = entity.UpdatedAt.UtcDateTime,
-
-      // TODO - EntityMapping - Business Entity to Mongo Entity to complete
-
-
-
-    };
-  }
-
-  public static RequestToBeReviewed ToEntity(this RequestToBeReviewedSql mongoEntity)
+  public static RequestToBeReviewed ToEntity(this RequestToBeReviewedMsSql mongoEntity)
   {
     return new RequestToBeReviewed()
     {
@@ -73,7 +57,7 @@ public static class RequestToBeReviewedSqlMappingExtensions
       Requisition = mongoEntity.Requisition
     };
   }
-  public static ServiceRequest ToEntity(this ServiceRequestSql mongoEntity)
+  public static ServiceRequest ToEntity(this ServiceRequestMsSql mongoEntity)
   {
     return new ServiceRequest()
     {
@@ -84,7 +68,7 @@ public static class RequestToBeReviewedSqlMappingExtensions
     };
   }
 
-  public static CodeableConcept ToEntity(this CodeableConceptSql mongoEntity)
+  public static CodeableConcept ToEntity(this CodeableConceptMsSql mongoEntity)
   {
     return new CodeableConcept()
     {
@@ -93,7 +77,7 @@ public static class RequestToBeReviewedSqlMappingExtensions
     };
   }
 
-  public static Coding ToEntity(this CodingSql mongoEntity)
+  public static Coding ToEntity(this CodingMsSql mongoEntity)
   {
     return new Coding()
     {
@@ -103,7 +87,7 @@ public static class RequestToBeReviewedSqlMappingExtensions
     };
   }
 
-  public static Identifier ToEntity(this IdentifierSql mongoEntity)
+  public static Identifier ToEntity(this IdentifierMsSql mongoEntity)
   {
     return new Identifier()
     {
@@ -113,7 +97,7 @@ public static class RequestToBeReviewedSqlMappingExtensions
     };
   }
 
-  public static Patient ToEntity(this PatientSql mongoEntity)
+  public static Patient ToEntity(this PatientMsSql mongoEntity)
   {
     return new Patient()
     {
@@ -122,7 +106,7 @@ public static class RequestToBeReviewedSqlMappingExtensions
     };
   }
 
-  public static HumanName ToEntity(this HumanNameSql mongoEntity)
+  public static HumanName ToEntity(this HumanNameMsSql mongoEntity)
   {
     return new HumanName()
     {
@@ -132,22 +116,22 @@ public static class RequestToBeReviewedSqlMappingExtensions
     };
   }
 
-  public static NameUse ToEntity(this NameUseSql mongoEntity)
+  public static NameUse ToEntity(this NameUseMsSql mongoEntity)
   {
     return mongoEntity switch
     {
-      NameUseSql.Usual => NameUse.Usual,
-      NameUseSql.Official => NameUse.Official,
-      NameUseSql.Temp => NameUse.Temp,
-      NameUseSql.Nickname => NameUse.Nickname,
-      NameUseSql.Anonymous => NameUse.Anonymous,
-      NameUseSql.Old => NameUse.Old,
-      NameUseSql.Maiden => NameUse.Maiden,
+      NameUseMsSql.Usual => NameUse.Usual,
+      NameUseMsSql.Official => NameUse.Official,
+      NameUseMsSql.Temp => NameUse.Temp,
+      NameUseMsSql.Nickname => NameUse.Nickname,
+      NameUseMsSql.Anonymous => NameUse.Anonymous,
+      NameUseMsSql.Old => NameUse.Old,
+      NameUseMsSql.Maiden => NameUse.Maiden,
       _ => throw new NotImplementedException($"Unknown NameUse: {mongoEntity}")
     };
   }
 
-  public static Observation ToEntity(this ObservationSql mongoEntity)
+  public static Observation ToEntity(this ObservationMsSql mongoEntity)
   {
     return new Observation()
     {
@@ -157,7 +141,7 @@ public static class RequestToBeReviewedSqlMappingExtensions
     };
   }
 
-  public static Specimen ToEntity(this SpecimenSql mongoEntity)
+  public static Specimen ToEntity(this SpecimenMsSql mongoEntity)
   {
     return new Specimen()
     {
@@ -166,24 +150,19 @@ public static class RequestToBeReviewedSqlMappingExtensions
     };
   }
 
-  public static ObservationStatus ToEntity(this ObservationStatusSql mongoEntity)
+  public static ObservationStatus ToEntity(this ObservationStatusMsSql mongoEntity)
   {
     return mongoEntity switch
     {
-      ObservationStatusSql.Amended => ObservationStatus.Amended,
-      ObservationStatusSql.Cancelled => ObservationStatus.Cancelled,
-      ObservationStatusSql.Corrected => ObservationStatus.Corrected,
-      ObservationStatusSql.EnteredInError => ObservationStatus.EnteredInError,
-      ObservationStatusSql.Final => ObservationStatus.Final,
-      ObservationStatusSql.Preliminary => ObservationStatus.Preliminary,
-      ObservationStatusSql.Registered => ObservationStatus.Registered,
-      ObservationStatusSql.Unknown => ObservationStatus.Unknown,
+      ObservationStatusMsSql.Amended => ObservationStatus.Amended,
+      ObservationStatusMsSql.Cancelled => ObservationStatus.Cancelled,
+      ObservationStatusMsSql.Corrected => ObservationStatus.Corrected,
+      ObservationStatusMsSql.EnteredInError => ObservationStatus.EnteredInError,
+      ObservationStatusMsSql.Final => ObservationStatus.Final,
+      ObservationStatusMsSql.Preliminary => ObservationStatus.Preliminary,
+      ObservationStatusMsSql.Registered => ObservationStatus.Registered,
+      ObservationStatusMsSql.Unknown => ObservationStatus.Unknown,
       _ => throw new NotImplementedException($"Unknown ObservationStatus: {mongoEntity}")
     };
-  }
-
-  public static RequestToBeReviewed ToEntity(this RequestToBeReviewedMongoV02 mongoEntity)
-  {
-    return (mongoEntity as RequestToBeReviewedSql).ToEntity();
   }
 }

@@ -4,7 +4,7 @@ namespace BioDiagnostics.Data.EFCore.SqlServer.Entities;
 /// Codes providing the status of an observation.
 /// </summary>
 /// <seealso cref="Hl7.Fhir.Model.ObservationStatus"/>
-public enum ObservationStatusSql
+public enum ObservationStatusMsSql
 {
   Registered,
   Preliminary,

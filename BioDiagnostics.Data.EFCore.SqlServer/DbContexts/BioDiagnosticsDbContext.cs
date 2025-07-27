@@ -6,41 +6,56 @@ namespace BioDiagnostics.Data.EFCore.SqlServer.DbContexts;
 
 public class BioDiagnosticsDbContext : DbContext
 {
-  public DbSet<RequestToBeReviewedSql> RequestToBeRevieweds { get; init; }
+  public DbSet<RequestToBeReviewedMsSql> RequestToBeRevieweds { get; init; }
 
   public BioDiagnosticsDbContext(DbContextOptions options)
       : base(options)
   {
-  }
+  }  
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {
     base.OnModelCreating(modelBuilder);
 
     modelBuilder
-      .Entity<RequestToBeReviewedSql>(e =>
+      .Entity<RequestToBeReviewedMsSql>(e =>
+      {       
+        e.HasMany(p => p.Requesteds);     
+      });
+
+    modelBuilder
+      .Entity<ServiceRequestMsSql>(e =>
       {
-        //e.ToCollection(RequestToBeReviewedRepository.CollectionName);
+        e.HasMany(p => p.Identifiers);
+        e.HasMany(p => p.Codes);
+        e.HasMany(p => p.Observations);
+        e.HasOne(p => p.Patient);
+      });
 
-        e.HasDiscriminator()
-        .HasValue<RequestToBeReviewedSql>("requestToBeReviewed");
+    modelBuilder
+      .Entity<CodeableConceptMsSql>(e =>
+      {
+        e.HasMany(p => p.Codings);
+      });
 
-        var requestedNavigation = e.OwnsMany(p => p.Requesteds);
-        requestedNavigation
-        .OwnsMany(p => p.Identifiers);
-        requestedNavigation
-        .OwnsMany(p => p.Codes)
-        .OwnsMany(p => p.Codings);
-        requestedNavigation
-        .OwnsMany(p => p.Observations)        
-        .OwnsOne(p => p.Specimen)
-        .OwnsMany(p => p.Identifiers);
-        
-        var patientNavigation = requestedNavigation.OwnsOne(p => p.Patient);
-        patientNavigation
-        .OwnsMany(p => p.Identifiers);
-        patientNavigation
-        .OwnsMany(p => p.Names);
+    modelBuilder
+      .Entity<ObservationMsSql>(e =>
+      {         
+        e.HasMany(p => p.Codes);
+        e.HasOne(p => p.Specimen);
+      });
+
+    modelBuilder
+      .Entity<SpecimenMsSql>(e =>
+      {
+        e.HasMany(p => p.Identifiers);
+      });
+
+    modelBuilder
+      .Entity<PatientMsSql>(e =>
+      {  
+        e.HasMany(p => p.Identifiers);
+        e.HasMany(p => p.Names);
       });
   }
 }

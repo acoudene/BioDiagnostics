@@ -6,7 +6,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BioDiagnostics.Data.EFCore.SqlServer.Entities;
 
-public record RequestToBeReviewedSql /*: IIdentifierMongoEntity, ITimestampedMongoEntity*/
+[Table("RequestToBeReviewed")]
+public record RequestToBeReviewedMsSql /*: IIdentifierMongoEntity, ITimestampedMongoEntity*/
 {
 
   // TODO - Use records instead of class
@@ -16,18 +17,15 @@ public record RequestToBeReviewedSql /*: IIdentifierMongoEntity, ITimestampedMon
 
   //[Key]
   //[Column("_id")]
-  //public ObjectId ObjectId { get; set; }
+  //public ObjectId ObjectId { get; set; }  
 
-  [Column("uuid")]
-  public Guid Uuid { get; set; }
+  [Key]
+  public required Guid Id { get; set; }
 
-  [NotMapped]
-  public required Guid Id { get => Uuid; set { Uuid = value; } }
-
-  [Column("createdAt")]
+  [Column("CreatedAt")]
   public DateTimeOffset CreatedAt { get; set; }
 
-  [Column("updatedAt")]
+  [Column("UpdatedAt")]
   public DateTimeOffset UpdatedAt { get; set; }
 
   // TODO - EntityProperties - Fields to complete
@@ -37,11 +35,11 @@ public record RequestToBeReviewedSql /*: IIdentifierMongoEntity, ITimestampedMon
   /// representing the composite or group identifier.
   /// </summary>
   /// <see cref="https://hl7.org/fhir/servicerequest-definitions.html#ServiceRequest.requisition"/>"/>
-  [Column("requisition")]
+  [Column("Requisition")]
   public string? Requisition { get; set; }
 
-  [Column("requesteds")]
-  public List<ServiceRequestSql> Requesteds { get; set; } = [];
+  [Column("Requesteds")]
+  public List<ServiceRequestMsSql> Requesteds { get; set; } = [];
 }
 
 // This commented part could be used to have benefits of mongo entity typing
